@@ -409,4 +409,25 @@ public class CheckerClassForAllMethods {
             return ("Soubor s adresářem '" + pathToFile + "', který Vámi byl zadán, neexistuje." + "\n" + "Ujistěte se prosím, že složka s Vámi zadaným adresářem existuje a zkuste to znovu.");
         }
     }
+
+    /**
+     * this method checks the controlMethodToTestBinaryFile method, then it runs
+     * it if the file exists, otherwise an appropriate message saying that the
+     * file doesnt
+     *
+     * @param pathToFile - the path of the file where the files are created
+     * @param nameOfFile - name of file
+     * @return readeble format of the binary file
+     */
+    public static String checkControlMethodForBinaryFile(String pathToFile, String nameOfFile) {
+        try {
+            checkerIfFileExists(pathToFile + "\\" + nameOfFile + ".bin");
+            return FileUtility.controlMethodToTestBinaryFile(pathToFile, nameOfFile);
+        } catch (IOException e) {
+            return ("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+                    + "\n" + "Soubor s adresářem '" + pathToFile + "\\" + nameOfFile + ".bin" + "', který Vámi byl zadán, neexistuje."
+                    + "\n" + "Ujistěte se prosím, že složka s Vámi zadaným adresářem existuje a zkuste to znovu." + "\n"
+                    + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + "\n");
+        }
+    }
 }

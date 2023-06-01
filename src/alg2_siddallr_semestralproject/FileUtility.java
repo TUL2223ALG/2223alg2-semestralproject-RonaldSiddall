@@ -2,8 +2,12 @@ package alg2_siddallr_semestralproject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -351,5 +355,32 @@ public class FileUtility {
     public static void writeInfoAfterMatchIntoBinaryFile(String winnerName, String looserName, String pathToFile, String pathOfFileWhereToCreate, String nameOfFile) throws IOException {
         String text = CheckerClassForAllMethods.checkConvertStatsAfterMatchToString(winnerName, looserName, pathToFile);
         writeIntoBinaryFileInGeneralMethod(text, pathOfFileWhereToCreate, nameOfFile);
+    }
+
+    /**
+     * this method returns a string that displays the contents of the specific
+     * binary file in readeble format
+     *
+     * @param pathToFile - path to the file, where the source code is saved
+     * @param fileName - name of the specific binary file the user wants to
+     * check
+     * @return string showing the contents of the binary file in readable format
+     * @throws IOException
+     */
+    public static String controlMethodToTestBinaryFile(String pathToFile, String fileName) throws IOException {
+        String convertedText = "";
+        String textBinary;
+        File binaryFile = new File(pathToFile);
+
+        try (DataInputStream reader = new DataInputStream(new FileInputStream(binaryFile + "\\" + fileName + ".bin"))) {
+            try {
+                while (true) {
+                    textBinary = reader.readUTF();
+                    convertedText += textBinary + ", ";
+                }
+            } catch (EOFException e) {
+            }
+        }
+        return convertedText;
     }
 }

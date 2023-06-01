@@ -21,6 +21,7 @@ public class UI {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
+        System.out.println(CheckerClassForAllMethods.checkControlMethodForBinaryFile(DirManageClass.getDirWhereToCreate(), "binarysa"));
         int choiceStartMenu;
         boolean endWholeProject = false;
         System.out.println(displayStartMenu());
@@ -142,7 +143,7 @@ public class UI {
      * displays the dir menu options, uses switch function to direct the user
      * based on their choice
      */
-    private static void dirMenu() {
+    private static void dirMenu() throws IOException {
         int choiceDirMenu;
         boolean end = false;
         do {
@@ -251,9 +252,10 @@ public class UI {
         StringBuilder builder = new StringBuilder();
         builder.append("--------------------------------------------------------------------------------------------").append("\n");
         builder.append("Zde si můžete zvolit, jakým způsobem si chcete zobrazit výsledky simulovaného zápasu.").append("\n");
+        builder.append("Mimo jiné zde máte i možnost kontrolního výpisu libovolného binárního souboru, který byl programem vytvořen.").append("\n");
         builder.append("Zvolte jednu z následujících možností, odpovídající číslo napište do určité oblasti níže:").append("\n");
         builder.append("--------------------------------------------------------------------------------------------").append("\n");
-        builder.append("▶ 1. Zobrazit výsledky na konzoli").append("\n").append("▶ 2. Zapsat výsledky do souboru").append("\n").append("▶ 3. Zaslat automatický email s výsledky").append("\n");
+        builder.append("▶ 1. Zobrazit výsledky na konzoli").append("\n").append("▶ 2. Zapsat výsledky do souboru (+ možnost kontrolního výpisu binárního souboru)").append("\n").append("▶ 3. Zaslat automatický email s výsledky").append("\n");
         builder.append("▶ 0. Vrátit se zpět ").append("\n").append("--------------------------------------------------------------------------------------------").append("\n").append("Vaši volbu napište níže ⬇⬇⬇:");
         return builder.toString();
     }
@@ -335,7 +337,7 @@ public class UI {
         builder.append("Zde si můžete zvolit, v jakém souboru si chcete uložit výsledky zápasu.").append("\n");
         builder.append("Zvolte jednu z následujících možností, odpovídající číslo napište do určité oblasti níže:").append("\n");
         builder.append("--------------------------------------------------------------------------------------------").append("\n");
-        builder.append("▶ 1. Uložit do textového souboru").append("\n").append("▶ 2. Uložit do binárního souboru").append("\n");
+        builder.append("▶ 1. Uložit do textového souboru").append("\n").append("▶ 2. Uložit do binárního souboru").append("\n").append("▶ 3. Kontrolní výpis binárního souboru").append("\n");
         builder.append("▶ 0. Vrátit se zpět ").append("\n").append("--------------------------------------------------------------------------------------------").append("\n").append("Vaši volbu napište níže ⬇⬇⬇:");
         return builder.toString();
     }
@@ -357,6 +359,8 @@ public class UI {
                     textFileOptionForSimulation();
                 case 2 ->
                     binaryFileOptionForSimulation();
+                case 3 ->
+                    controlBinaryFileDisplay();
                 case 0 ->
                     end = true;
                 default ->
@@ -411,7 +415,7 @@ public class UI {
      * provides the string representation of the binary file option for
      * simulation, uses string builder
      *
-     * @return
+     * @return string of the option
      * @throws IOException
      */
     private static String binaryFileOptionForSimulationText() throws IOException {
@@ -446,6 +450,39 @@ public class UI {
         System.out.println("➜ " + DirManageClass.getDirWhereToCreate() + "\n");
         System.out.println("➜ Soubor se úspěšně vytvořil." + "\n");
         FileUtility.writeInfoAfterMatchIntoBinaryFile(winnerName, looserName, DirManageClass.getDirSTR(), DirManageClass.getDirWhereToCreate(), nameOfFile);
+    }
+
+    /**
+     * provides the string representation of the binary file displaying in
+     * readeble format option, uses string builder
+     *
+     * @return string of the option
+     * @throws IOException
+     */
+    private static String controlMethodBinaryText() throws IOException {
+        StringBuilder builder = new StringBuilder();
+        builder.append("\n").append("                 ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔").append("\n");
+        builder.append("                                               KONTROLNÍ VÝPIS BINÁRNÍHO SOUBORU                         ");
+        builder.append("\n").append("                 ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔").append("\n");
+        builder.append("--------------------------------------------------------------------------------------------------------------------------------------").append("\n");
+        builder.append("                                                Který binární soubor si chcete vypsat na konzoli? ");
+        builder.append("\n").append("--------------------------------------------------------------------------------------------------------------------------------------").append("\n");
+        builder.append("Název binárního souboru musí být přesně v tomto formátu (bez koncovky!): NÁZEV SOUBORU ").append("\n");
+        return builder.toString();
+    }
+
+    /**
+     * asks the user to enter the name of the binary file that he wants to
+     * display
+     *
+     * @throws IOException
+     */
+    private static void controlBinaryFileDisplay() throws IOException {
+        System.out.println(controlMethodBinaryText());
+        System.out.println("Zadejte název binárního souboru, který je uložen v standartním adresáři tj. kde jsou vytvářeny soubory programem:");
+        sc.nextLine();
+        String nameOfFile = sc.nextLine();
+        System.out.println(CheckerClassForAllMethods.checkControlMethodForBinaryFile(DirManageClass.getDirWhereToCreate(), nameOfFile));
     }
 
     /**
