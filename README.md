@@ -20,16 +20,42 @@ Uživatel má na výběr tyto metody a funkce. Jedná se o několika úrovňové
 
 ![MethodAndFunctionDiagramALG2_page-0001](https://github.com/TUL2223ALG/2223alg2-semestralproject-RonaldSiddall/assets/114618003/f32e178d-00e5-4a6f-b21b-a75af8c11341)
 
-### Struktura vstupních a výstupních souborů
-#### Vstupní soubory - zdrojová data
+## Struktura vstupních a výstupních souborů
+### Vstupní soubory - zdrojová data
 Program pracuje s reálnými daty staženými z oficiální stránky českého stolního tenisu STIS. Tam jsou všechny žebříčky a informace k soutěžím, hráčům a týmům dostupné volně ke stažení ve formátu .csv, které jsou v otevírány v programu EXCEL. Program nedokáže pracovat s tímto souborem (v excelu), a proto je nutné, aby uživatel stažený soubor uložil v Excelu znovu, ale jako soubor CSV UTF-8 (s oddělovači) .csv.
 Pokud se jedná o relevantní soubor a uživatel správně tento soubor uloží, tak program následně dokáže pracovat s libovolnými soutěžemi a žebříčky, které se v rámci STIS nachází.
-#### Výstupní soubory
+### Výstupní soubory
 Pokud uživatel zvolí volbu, že si chce uložit výsledky teoretického nasimulovaného zápasu do souboru, tak má na výběr ze dvou možností: buď do textového či binárního souboru. Oba tyto soubory poté obsahují kompletní teoretický rozbor konkrétního zápasu včetně informací o tom, co každá informace znamená.
 
-### Class diagram (rozvržení tříd) projektu
+## Class diagram (rozvržení tříd) projektu
 Takto vypadá můj projekt rozvržený do tříd:
-
 ![ClassDiagramALG2_page-0001](https://github.com/TUL2223ALG/2223alg2-semestralproject-RonaldSiddall/assets/114618003/3cd9049b-df42-4248-a78e-24a4f68c9760)
 
-##
+## Testování a ukázka programu
+### Ukázka zdrojového souboru:
+![LeaderBoard](https://github.com/TUL2223ALG/2223alg2-semestralproject-RonaldSiddall/assets/114618003/46c70a64-2db4-4dbe-bd93-9d8a302c0730)
+Nějak takto by poté program dokázal soubor zpracovat a zobrazit uživatelem chtěné informace např.:
+### Zobrazení kompletního teoretického rozboru mezi dvěma hráči (zpracováno v textovém souboru):
+![Simulation](https://github.com/TUL2223ALG/2223alg2-semestralproject-RonaldSiddall/assets/114618003/e535a40b-f5fa-4daf-bc72-2f89e3e1587d)
+### Zobrazení žebříčku týmů seřazených podle bodů:
+![SortedTeams](https://github.com/TUL2223ALG/2223alg2-semestralproject-RonaldSiddall/assets/114618003/061a5355-ce94-40d5-96f5-a9166f16df74)
+### Zobrazení chybně zadaného jména (chybné parametry) uživatelem
+![NonExistingNames](https://github.com/TUL2223ALG/2223alg2-semestralproject-RonaldSiddall/assets/114618003/13dd6889-32c7-4a82-b598-d606a4f21082)
+
+## Externí knihovna
+**javax.mail.jar**
+
+Automatické posílání emailů dvojího typu:
+
+    První případ: email s kompletním analytickým rozborem zápasu mezi dvěma libovolnými hráči v rámci dané soutěže
+    Druhý případ: email s chybovou zprávou, pokud uživatel zadá, že chce zobrazit simulaci zápasu mezi hráči,
+                  kteří neexistují (buď jeden nebo oba ) v dané tabulce soutěže (viz dále)
+
+### Ukázka emailu:
+![Emails](https://github.com/TUL2223ALG/2223alg2-semestralproject-RonaldSiddall/assets/114618003/159c3dfd-ead0-4481-83db-792faaf29299)
+
+## TLDR
+Program využívá reálných dat a statistik stolního tenisu z oficiální stránky STIS. 
+Tato data zpracovává a následně je využívá k odhadu vývoje teoretického zápasu mezi dvěma hráči.
+Tento rozbor zápasu si může uživatel zobrazit vícero způsoby (např. automatickým emailem).
+Kromě toho program dokáže zobrazit další statistiky, informace a pracuje na základě více úrovňového menu, kterým se uživatel může pomocí kláves pohybovat
