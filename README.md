@@ -1,4 +1,4 @@
-# Semestrální práce - ALG2 - Ronald Ch. Siddall, AVI TUL
+# Semestrální práce ALG2 - Ronald Ch. Siddall, AVI FM TUL
 ## Motivace projektu
 Chtěl jsem svoji semestrální práci zaměřit na něco, co mi je velmi blízké a čemu se rád věnuji ve svém volném čase. Je to stolní tenis; poslední koníček a sport, který mi “přetrval” z dětství a kterému se mohu plně věnovat i nýnější době, během studia na univerzitě. 
 Stolní tenis je velmi komplexní hra, která je běžným člověkem mnohdy nepochopená. Komplexnost hry je v mnoha směrech - psychika, technika, načasování, teorie potahů, dřev a míčků, různé typy úderů a mnoho dalších specifik, které z tohoto sportu činí celoživotní (a to doslova) zálibu a koníček!
