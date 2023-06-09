@@ -10,9 +10,7 @@ import java.util.Scanner;
  * functioning of the project. Author: Ronald Ch. Siddall
  */
 public class UI {
-
     static Scanner sc = new Scanner(System.in, "Cp1250");
-
     /**
      * the main method, uses switch function to direct the user based on their
      * choice
@@ -21,7 +19,6 @@ public class UI {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        System.out.println(CheckerClassForAllMethods.checkControlMethodForBinaryFile(DirManageClass.getDirWhereToCreate(), "binarysa"));
         int choiceStartMenu;
         boolean endWholeProject = false;
         System.out.println(displayStartMenu());
